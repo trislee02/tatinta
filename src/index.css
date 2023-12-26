@@ -1,0 +1,152 @@
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+#root {
+  border: none !important;
+}
+
+body {
+  background-color: #fff;
+  color: #004972;
+}
+
+div {
+  background-color: transparent;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  color: #004972;
+}
+
+@keyframes l {
+  to {
+    clip-path: inset(0 -1ch 0 0);
+  }
+}
+
+.loading {
+  font-weight: bold;
+  display: inline-block;
+  font-family: monospace;
+  font-size: 30px;
+  clip-path: inset(0 3ch 0 0);
+  animation: l 1s steps(4) infinite;
+  border: none;
+  align-self: flex-start;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+
+.icon-active {
+  animation: like 0.5s 1;
+  fill: red;
+  stroke: none;
+}
+
+@keyframes like {
+  0% {
+    transform: scale(1);
+  }
+  90% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.is-typing {
+  margin-bottom: 10px;
+  width: 60px;
+  justify-content: space-around;
+  display: flex;
+  border: none;
+}
+
+.jump1,
+.jump2,
+.jump3,
+.jump4,
+.jump5 {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: gray;
+}
+
+.jump1 {
+  animation: typing 1.5s linear infinite;
+  animation-delay: 01.1s;
+}
+
+.jump2 {
+  animation: typing 1.5s linear infinite;
+  animation-delay: 01.2s;
+}
+
+.jump3 {
+  animation: typing 1.5s linear infinite;
+  animation-delay: 01.3s;
+}
+
+.jump4 {
+  animation: typing 1.5s linear infinite;
+  animation-delay: 01.4s;
+}
+
+.jump5 {
+  animation: typing 1.5s linear infinite;
+  animation-delay: 1.5s;
+}
+
+@keyframes typing {
+  0% {
+    transform: translateY(0px);
+  }
+
+  25% {
+    transform: translateY(0px);
+  }
+
+  35% {
+    transform: translateY(15px);
+  }
+
+  45% {
+    transform: translateY(0px);
+  }
+
+  60% {
+    transform: translateY(-15px);
+  }
+
+  75% {
+    background-color: white;
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}

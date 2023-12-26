@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  client:
+    container_name: frontend-tantinta
+    image: frontend-tantinta
+    build:
+      context: .
+      target: development
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/app/src
+    ports:
+      - 3000:3000
+    environment:
+      - REACT_APP_SERVER_URL=http://selab.nhtlongcs.com:20503
+    restart: always
