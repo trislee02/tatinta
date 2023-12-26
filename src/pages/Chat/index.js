@@ -149,13 +149,13 @@ const ChatBox = ({ children }) => {
       let interval = setInterval(() => {
         if (msgState === "sent") setMsgState("delivered");
         clearInterval(interval);
-      }, process.env.DELAY_DELIVERED);
+      }, process.env.REACT_APP_DELAY_DELIVERED);
     }
     else if (msgState === "delivered") {
       let interval = setInterval(() => {
         if (msgState === "delivered") setMsgState("seen");
         clearInterval(interval);
-      }, process.env.DELAY_SEEN);
+      }, process.env.REACT_APP_DELAY_SEEN);
     }
 
     setConversation((prev) =>
