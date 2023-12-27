@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import { IconButton, TextField } from "@mui/material";
-import { makeStyles } from "@mui/styles";
 
 import SendIcon from "@mui/icons-material/Send";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
@@ -9,60 +8,7 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import Message from "../../components/Message";
 import axios from "axios";
-
-const useStyles = makeStyles(() => ({
-  container: {
-    position: "fixed",
-    bottom: "2rem",
-    right: "2rem",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-end",
-    border: "none",
-    gap: "1rem",
-  },
-  chat: {
-    width: "24rem",
-    height: "32rem",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-end",
-    backgroundColor: "#f4f4f4",
-  },
-  header: {
-    backgroundColor: "#2d3552",
-    color: "#f6f6f6",
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0,
-    padding: "8px 16px",
-    fontWeight: "bold",
-    border: "none",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  box: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-end",
-    gap: 5,
-    overflowY: "hidden",
-    borderRadius: 0,
-    borderBottomColor: "transparent",
-    backgroundColor: "inherit",
-    borderColor: "#318fb5",
-  },
-  form: {
-    display: "grid",
-    gridTemplateColumns: "auto 60px",
-    columnGap: 10,
-    padding: "8px 16px",
-    border: "1px solid #318fb5",
-    borderBottomLeftRadius: 8,
-    borderBottomRightRadius: 8,
-  },
-}));
+import "./styles.css";
 
 const TypingAnimation = ({ staticText, text, delay }) => {
   const [currentText, setCurrentText] = useState('');
@@ -87,8 +33,6 @@ const TypingAnimation = ({ staticText, text, delay }) => {
 };
 
 const ChatBox = ({ children }) => {
-  const styles = useStyles();
-
   const [isLoading, setIsLoading] = useState(false);
   const [conversation, setConversation] = useState([]); // Array of conversation with
   // role 'prev-chat' as response from chat-box, 'human', and hidden role 'tantinta' (original response content from server)
@@ -144,6 +88,7 @@ const ChatBox = ({ children }) => {
     }
   };
 
+  // Update message state
   useEffect(() => {
     if (msgState === "sent") {
       let interval = setInterval(() => {
@@ -200,15 +145,15 @@ const ChatBox = ({ children }) => {
   }, [prevChat]);
 
   return (
-    <div className={styles.chat}>
+    <div className="chat">
       {children}
-      <div className={styles.box}>
+      <div className="box">
         <div
           style={{
-            overflowY: "scroll",
+            overflowY: "auto",
+            overflowX: "hidden",
             border: "none",
-            overflowX: "visible",
-            padding: 10,
+            padding: "10px 5px",
             backgroundColor: "inherit",
           }}
         >
@@ -230,7 +175,7 @@ const ChatBox = ({ children }) => {
         </div>
       </div>
 
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <TextField
           value={prompt}
           placeholder="Nhập câu hỏi"
@@ -255,15 +200,14 @@ const ChatBox = ({ children }) => {
 };
 
 const Chat = () => {
-  const styles = useStyles();
   const [active, setActive] = useState(true);
 
   return (
-    <div className={styles.container}>
+    <div className="container">
       {active && (
         <ChatBox>
-          <div className={styles.header}>
-            Tantinta
+          <div className="header">
+            Tatinta
             <IconButton
               size="small"
               onClick={() => {
